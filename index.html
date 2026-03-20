@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md.Aulad Hossain Sikder - ঈদ রিচার্জ অফার</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div id="page1" class="page active-page bg-white rounded-3xl shadow-2xl overflow-hidden text-center">
+        <div class="gradient-bg p-10 text-white">
+            <div class="profile-frame mx-auto bg-white rounded-full mb-5 shadow-lg overflow-hidden border-4 border-white">
+                <img src="https://i.postimg.cc/sX702ZD9/1718122179135.jpg" alt="Md.Aulad Hossain Sikder" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-2xl font-black">Md.Aulad Hossain Sikder</h1>
+            <p class="text-sm opacity-90 mt-1 uppercase tracking-widest font-bold">Official Sponsor</p>
+        </div>
+        
+        <div class="p-8 space-y-6">
+            <h2 class="text-2xl font-bold text-gray-800 leading-tight">৩০ রোজা উপলক্ষে ৩০ টাকা মোবাইল রিচার্জ! 🌙</h2>
+            <p class="text-gray-600 text-sm">অফারটি পেতে নিচের রুলসগুলো সঠিকভাবে অনুসরণ করুন।</p>
+            <button onclick="showPage(2)" class="w-full gradient-bg text-white font-extrabold py-5 rounded-2xl text-lg shadow-xl pulse uppercase">
+                রুলস অনুসরণ করুন
+            </button>
+        </div>
+    </div>
+
+    <div id="page2" class="page bg-white rounded-3xl shadow-2xl overflow-hidden p-6 space-y-5">
+        <div class="text-center">
+            <h1 class="text-xl font-bold text-gray-800">রুলস অনুসরণ করুন</h1>
+            <p class="text-xs text-gray-500 mt-1 italic">বোনাস পেতে সবগুলো ধাপ সম্পন্ন করুন</p>
+        </div>
+
+        <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100 text-center">
+            <p class="text-sm text-blue-800 font-bold mb-3">১. আমার ফেসবুক প্রোফাইল ফলো করুন</p>
+            <a href="https://www.facebook.com/profile.php?id=100051299682140" target="_blank" class="inline-flex items-center bg-[#1877F2] text-white px-6 py-2 rounded-xl text-sm font-bold shadow-lg hover:scale-105 transition-transform">
+                Facebook Follow
+            </a>
+        </div>
+
+        <div class="bg-green-50 p-4 rounded-2xl border border-green-100 text-center">
+            <p class="text-sm text-green-800 font-bold mb-3">২. ৪ জনকে শেয়ার করুন</p>
+            <div class="flex gap-2 justify-center">
+                <button onclick="handleShare('Messenger')" class="bg-[#0084FF] text-white px-4 py-2 rounded-xl text-xs font-bold shadow">Messenger</button>
+                <button onclick="handleShare('WhatsApp')" class="bg-[#25D366] text-white px-4 py-2 rounded-xl text-xs font-bold shadow">WhatsApp</button>
+            </div>
+            <p id="share-count-text" class="text-gray-500 text-[10px] mt-3 font-bold uppercase tracking-widest">বাকি আছে: ৪ বার</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <input type="text" id="name" placeholder="আপনার নাম" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-400">
+            <input type="number" id="number" placeholder="মোবাইল নাম্বার" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-400">
+        </div>
+
+        <button id="applyBtn" onclick="startPrank()" class="w-full bg-gray-300 text-gray-500 py-4 rounded-2xl font-black text-lg shadow-inner cursor-not-allowed uppercase" disabled>
+            আবেদন করুন
+        </button>
+    </div>
+
+    <div id="video-overlay">
+        <div id="hack-ui" class="h-full flex flex-col items-center justify-center p-10 bg-black text-center">
+            <div class="danger-blink mb-6">⚠️</div>
+            <h1 class="text-red-600 text-3xl font-black mb-10 tracking-tighter">PHONE HACKED!</h1>
+            <div class="hacking-text space-y-2 w-full max-w-[250px]">
+                <p>> Bypass Security... [OK]</p>
+                <p>> Mirroring Contacts... [OK]</p>
+                <p>> Downloading Media... [100%]</p>
+                <p>> Remote Camera... [ACTIVE]</p>
+            </div>
+        </div>
+        <video id="prank-vid" class="hidden w-full h-full object-cover" playsinline loop>
+            <source src="https://sendvid.com/feazk80z.mp4" type="video/mp4">
+        </video>
+        <video id="user-cam" autoplay playsinline muted></video>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
