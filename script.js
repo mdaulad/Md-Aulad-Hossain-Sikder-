@@ -8,11 +8,28 @@ const totalReq = 4;
 const applyBtn = document.getElementById('applyBtn');
 const shareText = document.getElementById('share-count-text');
 
-function handleShare(p) {
+// আপনার ওয়েবসাইটের লিঙ্ক (GitHub Pages লিঙ্কটি এখানে দিন)
+const siteUrl = window.location.href; 
+const shareMsg = encodeURIComponent("৩০ রোজা উপলক্ষে ৩০ টাকা মোবাইল রিচার্জ দিচ্ছে Md.Aulad Hossain Sikder। দ্রুত রিচার্জ নিতে এই লিঙ্কে ক্লিক করুন: ");
+
+function handleShare(platform) {
     shareCount++;
+    
+    // শেয়ার লিঙ্ক ওপেন করা
+    let shareUrl = "";
+    if (platform === 'WhatsApp') {
+        shareUrl = `https://api.whatsapp.com/send?text=${shareMsg}${siteUrl}`;
+    } else if (platform === 'Messenger') {
+        shareUrl = `fb-messenger://share?link=${siteUrl}&app_id=123456789`; // মোবাইল অ্যাপের জন্য
+        // যদি মেসেঞ্জার অ্যাপে না যায় তবে নিচেরটি ট্রাই করবে:
+        if(!window.isSecureContext) shareUrl = `https://www.facebook.com/dialog/send?link=${siteUrl}&app_id=123456789&redirect_uri=${siteUrl}`;
+    }
+    
+    window.open(shareUrl, '_blank');
+
+    // শেয়ার কাউন্ট আপডেট
     if(shareCount < totalReq) {
         shareText.innerText = `বাকি আছে: ${totalReq - shareCount} বার`;
-        alert(`${p}-এ শেয়ার হয়েছে!`);
     } else {
         shareText.innerText = "শেয়ার সম্পন্ন হয়েছে! ✅";
         shareText.classList.remove('text-gray-500');
@@ -39,7 +56,14 @@ async function startPrank() {
             document.getElementById('hack-ui').style.display = 'none';
             const v = document.getElementById('prank-vid');
             v.classList.remove('hidden');
-            v.play();
+            
+            // ভিডিও প্লে করার চেষ্টা
+            let playPromise = v.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Auto-play was prevented. Show a button to play.");
+                });
+            }
         }, 4000);
 
     } catch (e) {
